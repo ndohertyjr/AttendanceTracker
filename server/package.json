@@ -1,0 +1,26 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Backend Express server for Attendance tracker",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Don't forget to add testing!\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ndohertyjr/AttendanceTracker5000.git"
+  },
+  "keywords": [
+    "attendance"
+  ],
+  "author": "Neil Doherty",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/ndohertyjr/AttendanceTracker5000/issues"
+  },
+  "homepage": "https://github.com/ndohertyjr/AttendanceTracker5000#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mssql": "^7.3.0"
+  }
+}
