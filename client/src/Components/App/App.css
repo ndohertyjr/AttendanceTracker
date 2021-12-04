@@ -1,9 +1,25 @@
 * {
-    background-color: aqua;
-    font-size: 100;
-    font-family: Arial;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
 }
 
-.wrapper {
-    padding: 20px;
+#root{
+    position: relative;
+    min-height: 100vh;
+    padding-bottom: 75px;
+}
+
+.header {
+    background-color:  aquamarine;
+    position: relative;
+    height: 100px;
+}
+
+.footer {
+    background-color: aquamarine;
+    height: 75px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
 }

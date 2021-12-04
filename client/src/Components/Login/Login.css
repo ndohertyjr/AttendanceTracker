@@ -1,0 +1,64 @@
+.loginPage {
+    padding: 0px;
+    margin: 25px;
+    justify-content: center;
+    font-family: Arial;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+
+
+.imageContainer {
+    max-height: max-content;
+    max-width: max-content;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.loginWrapper form {
+    padding:15px;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+input {
+    vertical-align: middle;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 25px;
+    opacity: .75;
+}
+
+input:focus {
+    border: 3px solid #7FFFD4;
+
+}
+
+.loginForm button {
+    padding: 10px 20px;
+    margin: 5px;
+    margin-left: 120%;
+    text-align: center;
+    border-radius: 0.50em;
+    background-color: rgb(206, 206, 206);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 1rem;
+}
+
+.loginForm button:hover {
+    color: white;
+    border-style: solid;
+}
+
+
+
+
