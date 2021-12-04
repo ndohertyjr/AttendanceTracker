@@ -13,10 +13,16 @@ import Footer from '../Partials/Footer';
 
 //import Login from './Components/Login.js';
 
-export default class App extends Component {
-    render() {
+export default function App() {
+
+    //Store session token, if not logged in, login screen shows
+    const [token, setToken] = useState();
+    if (!token) {
+        return <Login setToken={setToken} />
+    }
+    
     return (
-           
+        
         <div className="wrapper">
             <BrowserRouter>
                 <Header />
@@ -28,9 +34,8 @@ export default class App extends Component {
                 <Footer />
             </BrowserRouter>
         </div>
-   
-        
+            
     );
-    }
+    
  
 }
