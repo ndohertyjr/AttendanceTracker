@@ -6,11 +6,14 @@
 
 //Import required models and packages
 require('dotenv').config();
+//FIXME: CHANGE ONCE DONE TESTING
+const { Sequelize, Model} = require('sequelize');
 const mysql = require('mysql');
-const Sequelize = require('sequelize');
 const UserModel = require('./user');
 const ClassModel = require('./class');
 const AttendanceModel = require('./attendance');
+const user = require('./user');
+
 
 //DB specific variables
 const dbURI = process.env.DB_URI;
@@ -24,8 +27,11 @@ const sequelize = new Sequelize(
     `${dbAdmin}`,
     `${dbPassword}`, {
         dialect: 'mysql',
-        host: `${dbURI}`
+        host: `${dbURI}`,
+        // FIXME: LOG OUTPUT FOR SEQUELIZE
+        logging: false
     });
+
 
 const connSuccess = function () {
     sequelize.authenticate()
@@ -43,9 +49,24 @@ const User = UserModel(sequelize, Sequelize);
 const Class = ClassModel(sequelize, Sequelize);
 const Attendance = AttendanceModel(sequelize, Sequelize);
 
-// Create associations to mimic inheritance
-//Attendance.belongsTo(User);
+// FIXME: DELETE ONCE DONE TESTING DB
+var modelTest = sequelize.models.users
+modelTest.findOne({ where: {
+    username: "jsmith1234",
+    password: "123456"
+}}).then(function(user) {
+    //Response for invalid usernames
+    if (!user) {
+        console.log("user not found!")
+    }
+    // Response for invalid passwords
+    if (!user.validPassword("123456")) {
+        console.log("password not valid")
+    }
+    
+    console.log("everything worked!")
 
+});
 
 
 // Force update tables
@@ -54,13 +75,12 @@ sequelize.sync({ force: false })
     .then(() => {
         console.log("All tables created!")
     })
-    .catch(err => {console.log(err)})
-
-
+    .catch(err => {console.log("Refresh Failed")})
 
 
 module.exports = {
     User,
     Class,
-    Attendance
+    Attendance,
+    sequelize
 }

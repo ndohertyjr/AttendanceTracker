@@ -16,16 +16,24 @@ Login.propTypes = {
 async function loginUser(credentials) {
     // FIXME: Remove log
     console.log("loginUser function running");
-    console.log(credentials);
-    console.log(JSON.stringify(credentials));
-    return fetch('http://localhost:8080/login', {
+    return fetch('http://localhost:8080/auth', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(credentials)
     })
-        .then(data => data.json())
+        .then(async response => {
+            const data = await response.json();
+
+            if (!response.ok) {
+                //FIXME: Implement function to handle rejected views
+                console.log("NOT OK!!!")
+            }
+            else {
+                return data;
+            }
+        })
 }
 
 //Main login function.  Accepts setToken parameter to determine if logged in
@@ -45,11 +53,15 @@ export default function Login({ setToken }){
             username,
             password
         });
-        setToken(token);
-
+    
         // FIXME: Remove log
         if (token) {
+            setToken(token);
             console.log("handleSubmit token obtained")
+        }
+        else {
+            // FIXME: ERROR POP UP
+            console.log("Login failed!")
         }
     }
  
