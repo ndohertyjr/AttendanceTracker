@@ -49,33 +49,13 @@ const User = UserModel(sequelize, Sequelize);
 const Class = ClassModel(sequelize, Sequelize);
 const Attendance = AttendanceModel(sequelize, Sequelize);
 
-// FIXME: DELETE ONCE DONE TESTING DB
-var modelTest = sequelize.models.users
-modelTest.findOne({ where: {
-    username: "jsmith1234",
-    password: "123456"
-}}).then(function(user) {
-    //Response for invalid usernames
-    if (!user) {
-        console.log("user not found!")
-    }
-    // Response for invalid passwords
-    if (!user.validPassword("123456")) {
-        console.log("password not valid")
-    }
-    
-    console.log("everything worked!")
-
-});
-
-
 // Force update tables
 //FIXME: SET FORCE FALSY FOR PROD
-sequelize.sync({ force: false })
+sequelize.sync()
     .then(() => {
         console.log("All tables created!")
     })
-    .catch(err => {console.log("Refresh Failed")})
+    .catch(err => {console.log("Refresh Failed!")})
 
 
 module.exports = {

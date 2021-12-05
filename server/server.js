@@ -22,7 +22,11 @@ var fs = require('fs');
 //needed for login
 const passport = require('passport');
 require('./config/passport');
-const { User, Student, Attendance } = require('./models/db');
+const { User, Class, Attendance } = require('./models/db');
+
+// Static data import
+const loadData  = require('./data/loadData');
+loadData();
 
 // Initialize express and options
 const app = express();
@@ -49,25 +53,6 @@ app.use((err, req, res, next) => {
         .json({"message": err.name + ": " + err.message});
     }
   });
-
-// static data imports
-const userList = JSON.parse(fs.readFileSync('./data/users.json', 'utf-8'));
-const classList = JSON.parse(fs.readFileSync('./data/classes.json', 'utf-8'));
-const attendanceList = JSON.parse(fs.readFileSync('./data/attendance.json', 'utf-8'));
-
-
-
-
-for (var i = 0; i < userList.length; i++) {
-    console.log
-    User.create(userList[i])
-        .then(() => {
-            console.log("User added!!!!");
-        })
-        .catch(err => {
-            console.log("Failed to add user");
-        })
-}
 
 
 // Router paths
