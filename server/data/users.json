@@ -1,0 +1,64 @@
+[
+    {
+        "user_id": 123,
+        "username": "jsmith1234",
+        "firstName": "Joe",
+        "lastName": "Smith",
+        "password": "123456",
+        "role": "student",
+        "section":  "111-XA"
+    },
+    {
+        "user_id": 234,
+        "username": "billy@bob",
+        "firstName": "Thorn",
+        "lastName": "Ton",
+        "password": "password123",
+        "role": "student",
+        "section":  "111-XA"
+    },
+    {
+        "user_id": 345,
+        "username": "rickR0ll",
+        "firstName": "Rick",
+        "lastName":"Astley",
+        "password": "qwerty@123",
+        "role": "student",
+        "section":  "222-AB"
+    },
+    {
+        "user_id": 456,
+        "username": "JohnKimble",
+        "firstName": "Arnold",
+        "lastName": "Schwarzenegger",
+        "password": "kinderCop",
+        "role": "teacher"
+    },
+    {
+        "user_id": 567,
+        "username": "funnyName",
+        "firstName": "The Joker",
+        "lastName": "Unknown",
+        "password": "batman",
+        "role": "student",
+        "section":  "147-AC"
+    },
+    {
+        "user_id": 678,
+        "username": "frank",
+        "firstName": "Frank",
+        "lastName": "Lee",
+        "password": "mydear",
+        "role": "student",
+        "section":  "147-AC"
+    },
+    {
+        "user_id": 789,
+        "username": "Moss",
+        "firstName": "Maurice",
+        "lastName": "Moss",
+        "password": "01189998819991197253",
+        "role": "student",
+        "section":  "222-AB"
+    }
+]
