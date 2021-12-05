@@ -1,16 +1,14 @@
-import React, { Component } from 'react';
-import Header from '../Partials/Header';
-import ClassInfo from '../ClassInfo/ClassInfo';
+import React from 'react';
 
 
 export default function StudentDashboard() {
-    greeting = (
-        <h1>Welcome, {this.name}!</h1>
+    var greeting = (
+        <h1>Welcome, Neil!</h1>
     )
 
     return (
         <div className="container">
-            <ClassInfo  name={this.props.name}/>
+            {greeting}
         </div>
         
     );
