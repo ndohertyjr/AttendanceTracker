@@ -25,7 +25,7 @@ async function loginUser(credentials) {
     })
         .then(async response => {
             const data = await response.json();
-
+            console.log(data)
             if (!response.ok) {
                 //FIXME: Implement function to handle rejected views
                 console.log("NOT OK!!!")
@@ -56,6 +56,7 @@ export default function Login({ setToken }){
     
         // FIXME: Remove log
         if (token) {
+            console.log(token)
             setToken(token);
             console.log("handleSubmit token obtained")
         }

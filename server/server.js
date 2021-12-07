@@ -1,4 +1,7 @@
+require("dotenv").config();
+
 const express = require('express');
+const app = express();
 const createError = require('http-errors');
 const path = require('path');
 const cors = require('cors');
@@ -6,10 +9,14 @@ const cookieParser = require('cookie-parser');
 const winston = require('winston'),
     expressWinston = require('express-winston');
 
-// Router files
-const authenticationRouter = require('./controllers/authentication');
-const studentRouter = require('./controllers/student');
-const teacherRouter = require('./controllers/teacher');
+//needed for login
+const passport = require('passport');
+require('./config/passport');
+const { User, Class, Attendance } = require('./models/db');
+
+// Router index
+const routerIndex = require('./routes/index');
+
 
 const port = process.env.PORT || 8080;
 
@@ -19,22 +26,20 @@ var fs = require('fs');
 
 //FIXME: ADD WINSTON LOGGING
 
-//needed for login
-const passport = require('passport');
-require('./config/passport');
-const { User, Class, Attendance } = require('./models/db');
+
 
 // Static data import
 const loadData  = require('./data/loadData');
 loadData();
 
 // Initialize express and options
-const app = express();
+
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser());
-app.use(passport.initialize());
+
+
 
 // Allow CORS
 app.use('/api', (req, res, next) => {
@@ -56,31 +61,7 @@ app.use((err, req, res, next) => {
 
 
 // Router paths
-app.use('/auth', authenticationRouter);
-//app.use('/studentDashboard', studentRouter);
-//app.use('/teacherDashboard', teacherRouter);
-
-
-
-
-app.use('/login', (req, res) => {
-    
-});
-
-
-// Test Get route to sync to react
-app.get('/express_backend', (req, res) => {
-    res.send({express: 'Backend connected to frontend'});
-});
-
-app.get('/test', (req, res) => {
-    res.send({express: 'Test route works'});
-});
-
-app.get('/', (req, res) => {
-    res.send({express: 'Test login'});
-});
-
+app.use('/', routerIndex);
 
 
 //Display port that Express server is listening on

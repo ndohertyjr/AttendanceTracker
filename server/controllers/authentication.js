@@ -5,8 +5,8 @@
 */
 
 const passport = require('passport');
-const { sequelize } = require('../models/db');
-const User = sequelize.models.users;
+
+
 
 // Login function
 const login = (req, res) => {
@@ -32,14 +32,6 @@ const login = (req, res) => {
                 .json(err);
         }
 
-        console.log("Server request: " + req.body.username)
-
-        console.log("made it to auth")
-        if (err) {
-            return res
-                .status(404)
-                .json(err);
-        }
         if (user) {
             const token = user.generateJWT();
             return res
@@ -54,4 +46,8 @@ const login = (req, res) => {
 
 };
 
-module.exports = login;
+
+
+module.exports = {
+    login    
+}

@@ -2,6 +2,8 @@
     Model for the Class Table of the db
 */
 
+const { DATEONLY } = require("sequelize/dist");
+
 module.exports = (sequelize, type) => {
     return sequelize.define('classes', {
         section: {
@@ -11,6 +13,10 @@ module.exports = (sequelize, type) => {
         },
         className: {
             type:type.STRING(30),
+            allowNull:false
+        },
+        classBeginDate: {
+            type:type.DATEONLY,
             allowNull:false
         }
     });

@@ -9,10 +9,6 @@ module.exports = (sequelize, type) => {
             allowNull:false,
             primaryKey:true
         },
-        classBeginDate: {
-            type:type.DATEONLY,
-            allowNull:false
-        },
         daysAttended: {
             type: type.INTEGER,
 

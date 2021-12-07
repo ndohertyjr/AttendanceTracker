@@ -47,13 +47,15 @@ module.exports = (sequelize, type) => {
 
     // Generate JWT for the user that is valid for 7 days
     User.prototype.generateJWT = function() {
+        
+        const issuedAt = new Date();
         const expiry = new Date();
         expiry.setDate(expiry.getDate() + 7);
-
      
         return jwt.sign({
             user_id: this.user_id,
             username: this.username,
+            iat: parseInt(issuedAt.getTime() / 1000, 10),
             exp: parseInt(expiry.getTime() / 1000, 10),
         }, process.env.JWT_SECRET);
 

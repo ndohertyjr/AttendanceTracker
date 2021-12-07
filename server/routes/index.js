@@ -14,19 +14,22 @@ const auth = jwt({
 });
 
 const authController = require('../controllers/authentication');
-const studentController = require('../controllers/student');
-const teacherController = require('../controllers/teacher');
+const studentController = require('../controllers/studentData');
+
+
 
 router  
     .route('/auth')
     .post(authController.login);
 
-/*
 router
-    .route('/studentDashboard');
+    .route('/studentDash')
+    .get(auth, studentController.getStudent);
 
 router
-    .route('/teacherDashboard');
-    */
+    .route('/teacherDash')
+    .get(auth, studentController.getAllStudents);
+
+    
 
 module.exports = router;
