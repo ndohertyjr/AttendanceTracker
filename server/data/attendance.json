@@ -1,32 +1,26 @@
 [
     {
         "id": 123,
-        "classBeginDate": "2021-10-01",
         "daysAttended": 45
     },
     {
         "id": 234,
-        "classBeginDate": "2021-10-01",
         "daysAttended": 30
     },
     {
         "id": 345,
-        "classBeginDate": "2021-10-01",
         "daysAttended": 22
     },
     {
         "id": 567,
-        "classBeginDate": "2021-10-01",
         "daysAttended": 40
     },
     {
         "id": 678,
-        "classBeginDate": "2021-10-01",
         "daysAttended": 10
     },
     {
         "id": 789,
-        "classBeginDate": "2021-10-01",
         "daysAttended": 43
     }
 

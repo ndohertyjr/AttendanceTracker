@@ -49,11 +49,19 @@ const User = UserModel(sequelize, Sequelize);
 const Class = ClassModel(sequelize, Sequelize);
 const Attendance = AttendanceModel(sequelize, Sequelize);
 
+//Set associations
+Class.hasMany(User, {foreignKey: 'section', sourceKey: 'section'});
+User.belongsTo(Class, {foreignKey: 'section', sourceKey: 'section'});
+Attendance.belongsTo(User, {foreignKey: 'user_id', sourceKey: 'id'});
+User.hasOne(Attendance, {foreignKey: 'id', sourceKey: 'user_id'});
+
+
+
 // Force update tables
 //FIXME: SET FORCE FALSY FOR PROD
-sequelize.sync()
+sequelize.sync({force: false})
     .then(() => {
-        console.log("All tables created!")
+        console.log("All tables created!!")
     })
     .catch(err => {console.log("Refresh Failed!")})
 
