@@ -15,6 +15,7 @@ const auth = jwt({
 
 const authController = require('../controllers/authentication');
 const studentController = require('../controllers/studentData');
+const attendanceController = require('../controllers/attendance');
 
 
 
@@ -24,7 +25,8 @@ router
 
 router
     .route('/studentDash')
-    .get(auth, studentController.getStudent);
+    .get(auth, studentController.getStudent)
+    .put(auth, attendanceController.updateCheckinTime);;
 
 router
     .route('/teacherDash')
