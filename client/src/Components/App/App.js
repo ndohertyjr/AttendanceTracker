@@ -8,6 +8,7 @@ import './App.css';
 import Login from '../Login/Login';
 import StudentDashboard from '../StudentDashboard/StudentDashboard';
 import TeacherDashboard from '../TeacherDashboard/TeacherDashboard';
+import Classes from '../Classes/Classes'
 import Header from '../Partials/Header';
 import Footer from '../Partials/Footer';
 import useToken from './useToken';
@@ -36,7 +37,8 @@ export default function App() {
                 <Header />
                 <Routes path="/">
                     <Route path="studentDashboard" element={<StudentDashboard />} /> 
-                    <Route path="teacherDashboard" element={<TeacherDashboard />} />                          
+                    <Route path="teacherDashboard" element={<TeacherDashboard />} />
+                    <Route path="classInfo/:classParam" element={<Classes />} />                          
                 </Routes>
                 <Footer />
             </BrowserRouter>

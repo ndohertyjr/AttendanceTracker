@@ -16,7 +16,7 @@ Login.propTypes = {
 async function loginUser(credentials) {
     // FIXME: Remove log
     console.log("loginUser function running");
-    return fetch('http://localhost:8080/auth', {
+    return fetch('http://localhost:8080/api/auth', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -25,7 +25,7 @@ async function loginUser(credentials) {
     })
         .then(async response => {
             const data = await response.json();
-            console.log(data)
+ 
             if (!response.ok) {
                 //FIXME: Implement function to handle rejected views
                 console.log("NOT OK!!!")
@@ -53,10 +53,8 @@ export default function Login({ setToken }){
             username,
             password
         });
-    
-        // FIXME: Remove log
+
         if (token) {
-            console.log(token)
             setToken(token);
             console.log("handleSubmit token obtained")
         }

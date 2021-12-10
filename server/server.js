@@ -41,13 +41,13 @@ app.use(cookieParser());
 
 
 
-// Allow CORS
+//allow CORS and set response headers
 app.use('/api', (req, res, next) => {
-    res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
-    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-    next();
-})
+  res.header('Access-Control-Allow-Origin', 'http://localhost:3000/');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  next();
+});
 
 
 // Catch unauthorized error and create 401
@@ -60,8 +60,8 @@ app.use((err, req, res, next) => {
   });
 
 
-// Router paths
-app.use('/', routerIndex);
+// Router path
+app.use('/api', routerIndex);
 
 
 //Display port that Express server is listening on

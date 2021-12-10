@@ -105,5 +105,6 @@ const updateDaysAttended = user_id => {
 module.exports = {
     updateCheckinTime,
     getLastCheckin, 
-    validateLastCheckin
+    validateLastCheckin,
+    updateDaysAttended
 }

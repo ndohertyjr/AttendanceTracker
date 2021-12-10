@@ -41,7 +41,7 @@ module.exports = (sequelize, type) => {
     //Validate a user's password 
     //FIXME: ADD ENCRYPTION
     User.prototype.validPassword = function(password) {
-        console.log('test!')
+        console.log('User:ValidPassword - FIXME ADD CRYPTO')
         return true;
     }
 
@@ -55,6 +55,7 @@ module.exports = (sequelize, type) => {
         return jwt.sign({
             user_id: this.user_id,
             username: this.username,
+            role: this.role,
             iat: parseInt(issuedAt.getTime() / 1000, 10),
             exp: parseInt(expiry.getTime() / 1000, 10),
         }, process.env.JWT_SECRET);

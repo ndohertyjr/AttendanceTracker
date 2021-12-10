@@ -5,13 +5,14 @@
 const { sequelize } = require('../models/db');
 const Class = sequelize.models.classes;
 
-// Query database using a specific class section to return the class name
+
+// Query database to return all classes
 const getAllClasses = async (req, res) => {
     
     console.log("ClassInfo:getClassName - starting query ");
     
     Class.findAll({})
-        .then(function(classInfo, ) {
+        .then(function(classInfo) {
         
         if (classInfo) {
             
@@ -29,6 +30,7 @@ const getAllClasses = async (req, res) => {
         
     });
 }
+
 
 module.exports = {
     getAllClasses

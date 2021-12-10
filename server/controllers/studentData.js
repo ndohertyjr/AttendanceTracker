@@ -81,6 +81,8 @@ const getAllStudents = async (req, res) => {
     });
 }
 
+
+
 module.exports = {
     getStudent,
     getAllStudents

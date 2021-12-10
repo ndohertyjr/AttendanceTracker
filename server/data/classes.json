@@ -1,17 +1,17 @@
 [
     {
         "section": "111-XA",
-        "className": "CMD 100: Intro to Comedy",
+        "className": "COM100",
         "classBeginDate": "2021-10-01"
     },
     {
         "section": "222-AB",
-        "className": "CMD 100: Intro to Comedy",
+        "className": "CS300",
         "classBeginDate": "2021-10-01"
     },
     {
         "section": "147-AC",
-        "className": "CMD 100: Intro to Comedy",
+        "className": "HIS250",
         "classBeginDate": "2021-10-01"
     }
 ]
