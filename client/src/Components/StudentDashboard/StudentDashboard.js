@@ -1,7 +1,7 @@
 import React from 'react';
 
 import useToken from '../App/useToken'
-import UserData from '../_helpers/UserData';
+import UserData from '../User/UserData';
 
 async function getStudentData() {
     // Login function to validate user info with server 
@@ -58,25 +58,22 @@ class StudentDashboard extends React.Component {
     
 
     render() {
-        const {DataLoaded, user_id, firstName, lastName, section, className, attendance} = this.state;
+        const {DataLoaded} = this.state;
 
         
         if (!DataLoaded) {
-            return <h1>Awaiting User Info</h1>
+            return <h1>Loading data...</h1>
 
         } else {
            
-            console.log("TEST: " + firstName)
-        }
-       
         //console.log(JSON.stringify(user))
 
         return (
-            <div className="UserData">
-                <UserData user={this.state.user} />
-                
+            <div className="UserDataContainer">
+                <UserData user={this.state.user} />   
             </div>
         )
+        }
     };
 
     

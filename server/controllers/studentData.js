@@ -4,7 +4,7 @@
 
 const { sequelize } = require('../models/db');
 const User = sequelize.models.users;
-const Class = sequelize.models.classes;
+const ClassData = sequelize.models.classData;
 const Attendance = sequelize.models.attendance;
 
 
@@ -21,14 +21,15 @@ const getStudent = async (req, res) => {
         where: {
             user_id: req.payload.user_id
         }, include: [{
-            model: Class,
-            attributes: ['className','classBeginDate'],
+            model: ClassData,
+            attributes: ['className','classBeginDate', 'numClassesPerWeek'],
             required: false
         }, {
             model: Attendance,
             required: false,
             attributes: ['daysAttended', 'lastAttendanceCheckin']
-        }]
+        }],
+        attributes: {exclude: ['password']}
     }).then(function(user) {
 
         if (user) {   
@@ -57,15 +58,17 @@ const getAllStudents = async (req, res) => {
             "role": "student"
         },
         include: [{
-            model: Class,
-            attributes: ['className','classBeginDate'],
+            model: ClassData,
+            attributes: ['className','classBeginDate', 'numClassesPerWeek'],
             required: false
         }, {
             model: Attendance,
             required: false,
             attributes: ['daysAttended', 'lastAttendanceCheckin']
-        }]
-    }).then(function(users) {
+        }],
+        attributes: {exclude: ['password']}
+    })
+    .then(function(users) {
 
         if (users) {   
             console.log("Student:GetAllStudents - query succeeded")

@@ -1,17 +1,20 @@
 [
     {
         "section": "111-XA",
-        "className": "COM100",
-        "classBeginDate": "2021-10-01"
+        "className": "CS300",
+        "classBeginDate": "2021-10-01",
+        "numClassesPerWeek": 2
     },
     {
         "section": "222-AB",
         "className": "CS300",
-        "classBeginDate": "2021-10-01"
+        "classBeginDate": "2021-10-01",
+        "numClassesPerWeek": 2
     },
     {
         "section": "147-AC",
         "className": "HIS250",
-        "classBeginDate": "2021-10-01"
+        "classBeginDate": "2021-10-01",
+        "numClassesPerWeek": 4
     }
 ]

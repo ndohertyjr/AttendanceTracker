@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
-import ClassDataTable from './ClassDataTable';
-
-
-const listOfClasses = [{section: '12345', className: 'The Test Class', classBeginDate: "2021-01-01"},
-                            {section: '54984', className: 'The Art of Testing', classBeginDate: "2021-01-01"}] 
-
-        
+import ClassDataTable from '../Classes/ClassDataTable';
+      
 
 class TeacherDashboard extends Component {
     constructor(props) {
@@ -68,43 +63,31 @@ class TeacherDashboard extends Component {
     displayClassTable(listOfClasses, userList) {
         return (
             <div className="tableContainer">
-                    <ClassDataTable classListData={listOfClasses} studentListData={userList}/>               
-                
+                    <ClassDataTable classListData={listOfClasses} studentListData={userList}/>                  
             </div>
 
         )
     }
 
-
-
     render() {
         const {DataLoaded, userList, classList} = this.state
         
-
-        // Get names of classes
-        for (var i = 0; i < classList.length; i++) {
-            if (!JSON.stringify(listOfClasses).includes(classList[i].className)) {
-                listOfClasses.push(classList[i])
-            }   
-        }
-    
-
-
     
         if (!DataLoaded) {
             return <h1>Loading Dashboard!</h1>
-        }
+        } else {
 
-        return (
-            <div className="teacherViewContainer">
-                <div className="teacherViewHead">
-                    <h1>Teacher Dashboard</h1>
+            return (
+                <div className="teacherViewContainer">
+                    <div className="teacherViewHead">
+                        <h1>Teacher Dashboard</h1>
+                    </div>
+                    <div className="teacherViewBody">
+                        {this.displayClassTable(classList, userList)}
+                    </div>     
                 </div>
-                <div className="teacherViewBody">
-                    {this.displayClassTable(listOfClasses, userList)}
-                </div>     
-            </div>
-        )
+            )
+        }
     }
 }
 

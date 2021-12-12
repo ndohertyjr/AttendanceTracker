@@ -26,8 +26,11 @@ router
 
 router
     .route('/studentDash')
-    .get(auth, studentController.getStudent)
-    .put(auth, attendanceController.updateCheckinTime);;
+    .get(auth, studentController.getStudent);
+
+router
+    .route('/attendanceUpdates')
+    .put(auth, attendanceController.updateCheckinTime);
 
 router
     .route('/teacherDash')

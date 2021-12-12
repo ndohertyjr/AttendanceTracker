@@ -3,7 +3,7 @@
 */
 
 const { sequelize } = require('../models/db');
-const Class = sequelize.models.classes;
+const ClassData = sequelize.models.classData;
 
 
 // Query database to return all classes
@@ -11,7 +11,7 @@ const getAllClasses = async (req, res) => {
     
     console.log("ClassInfo:getClassName - starting query ");
     
-    Class.findAll({})
+    ClassData.findAll({})
         .then(function(classInfo) {
         
         if (classInfo) {

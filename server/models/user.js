@@ -26,7 +26,8 @@ module.exports = (sequelize, type) => {
         },        
         password: {
             type:type.STRING(20),
-            allowNull:false
+            allowNull:false,
+            select: false
         },
         role: {
             type:type.STRING(7),

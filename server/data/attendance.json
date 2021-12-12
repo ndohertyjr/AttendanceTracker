@@ -1,27 +1,27 @@
 [
     {
         "id": 123,
-        "daysAttended": 45
+        "daysAttended": 20
     },
     {
         "id": 234,
-        "daysAttended": 30
+        "daysAttended": 9
     },
     {
         "id": 345,
-        "daysAttended": 22
+        "daysAttended": 15
     },
     {
         "id": 567,
-        "daysAttended": 40
+        "daysAttended": 13
     },
     {
         "id": 678,
-        "daysAttended": 10
+        "daysAttended": 17
     },
     {
         "id": 789,
-        "daysAttended": 43
+        "daysAttended": 30
     }
 
 ]

@@ -55,6 +55,7 @@ const updateCheckinTime = async (req, res) => {
 
 //Queries table to get last check in info
 const getLastCheckin = async user_id => {
+
     console.log("AttendanceController:getLastCheckin - beginning")
     const lastDate = await Attendance.findOne({
         where: {
@@ -63,7 +64,6 @@ const getLastCheckin = async user_id => {
     });
 
     if (lastDate) {         
-
         return lastDate.lastAttendanceCheckin
     } else {
         console.log("No prior checkin data")

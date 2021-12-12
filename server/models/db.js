@@ -10,7 +10,7 @@ require('dotenv').config();
 const { Sequelize, Model} = require('sequelize');
 const mysql = require('mysql');
 const UserModel = require('./user');
-const ClassModel = require('./class');
+const ClassModel = require('./classModel');
 const AttendanceModel = require('./attendance');
 const user = require('./user');
 
@@ -46,12 +46,12 @@ const connSuccess = function () {
 
 // Instantiate db tables
 const User = UserModel(sequelize, Sequelize);
-const Class = ClassModel(sequelize, Sequelize);
+const ClassData = ClassModel(sequelize, Sequelize);
 const Attendance = AttendanceModel(sequelize, Sequelize);
 
 //Set associations
-Class.hasMany(User, {foreignKey: 'section', sourceKey: 'section'});
-User.belongsTo(Class, {foreignKey: 'section', sourceKey: 'section'});
+ClassData.hasMany(User, {foreignKey: 'section', sourceKey: 'section'});
+User.belongsTo(ClassData, {foreignKey: 'section', sourceKey: 'section'});
 Attendance.belongsTo(User, {foreignKey: 'user_id', sourceKey: 'id'});
 User.hasOne(Attendance, {foreignKey: 'id', sourceKey: 'user_id'});
 
@@ -68,7 +68,7 @@ sequelize.sync({force: false})
 
 module.exports = {
     User,
-    Class,
+    ClassData,
     Attendance,
     sequelize
 }

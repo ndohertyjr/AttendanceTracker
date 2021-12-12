@@ -1,0 +1,23 @@
+tr {
+    padding: 5px;
+    align-items: baseline;
+}
+
+table {
+    table-layout: fixed;
+    width: 100%;
+    background-color: aquamarine;
+}
+
+td {
+    width: auto;
+    
+}
+
+th {
+    background-color: red;
+}
+
+ClassData {
+    
+}

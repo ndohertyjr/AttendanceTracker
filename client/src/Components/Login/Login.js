@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate }  from 'react-router-dom';
 
 import PropTypes from 'prop-types';
 import './Login.css'
@@ -38,7 +39,7 @@ async function loginUser(credentials) {
 
 //Main login function.  Accepts setToken parameter to determine if logged in
 export default function Login({ setToken }){
-
+    const navigate = useNavigate();
     //Hooks to return state values for user login information
     const [username, setUserName] = useState();
     const [password, setPassword] = useState();
@@ -57,6 +58,7 @@ export default function Login({ setToken }){
         if (token) {
             setToken(token);
             console.log("handleSubmit token obtained")
+            navigate('/dashboard')
         }
         else {
             // FIXME: ERROR POP UP
