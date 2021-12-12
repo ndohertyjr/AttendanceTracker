@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import './App.css';
@@ -6,43 +6,44 @@ import './App.css';
 
 //route imports
 import Login from '../Login/Login';
-import StudentDashboard from '../StudentDashboard/StudentDashboard';
-import TeacherDashboard from '../TeacherDashboard/TeacherDashboard';
 import Header from '../Partials/Header';
 import Footer from '../Partials/Footer';
+import PublicRoute from '../_routes/PublicRoute';
+import PrivateRoute from '../_routes/PrivateRoute';
 import useToken from './useToken';
+import DashboardSelector from '../_routes/DashboardSelector';
+import ClassData from '../Classes/ClassData';
 
 
 export default function App() {
 
-    //Get session token. If not logged in, login screen shows
-    const {token, setToken} = useToken();
+    const {token, setToken} = useToken()
 
-    if (!token) {
-        return (
-        <div>
-            <Header />   
-            <Login setToken={setToken} />
-            <Footer />
-        </div>
-        )
-    }
-    
-    
+    console.log(token)
     return (
-        
-        <div className="wrapper">
-            <BrowserRouter>
+        <BrowserRouter>
+            <Suspense
+                fallback={<h1>Loading...</h1>}
+            >   
                 <Header />
-                <Routes path="/">
-                    <Route path="studentDashboard" element={<StudentDashboard />} /> 
-                    <Route path="teacherDashboard" element={<TeacherDashboard />} />                          
+                <Routes path='/'>
+                        <Route path='' element={<PublicRoute isAuthenticated={token}/>} />
+                        <Route path='login' element={<Login setToken={setToken}/>} />
+                        <Route path='dashboard/' element={
+                            <PrivateRoute>
+                                <DashboardSelector />  
+                            </PrivateRoute>
+                        }>      
+                        <Route path=':className' element={<ClassData />}/>
+                        </Route>
+                        
+
+
                 </Routes>
                 <Footer />
-            </BrowserRouter>
-        </div>
-            
-    );
+            </Suspense>
+        </BrowserRouter>
+    )
     
  
 }

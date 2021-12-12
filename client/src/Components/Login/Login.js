@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate }  from 'react-router-dom';
 
 import PropTypes from 'prop-types';
 import './Login.css'
@@ -16,7 +17,7 @@ Login.propTypes = {
 async function loginUser(credentials) {
     // FIXME: Remove log
     console.log("loginUser function running");
-    return fetch('http://localhost:8080/auth', {
+    return fetch('http://localhost:8080/api/auth', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -25,7 +26,7 @@ async function loginUser(credentials) {
     })
         .then(async response => {
             const data = await response.json();
-            console.log(data)
+ 
             if (!response.ok) {
                 //FIXME: Implement function to handle rejected views
                 console.log("NOT OK!!!")
@@ -38,7 +39,7 @@ async function loginUser(credentials) {
 
 //Main login function.  Accepts setToken parameter to determine if logged in
 export default function Login({ setToken }){
-
+    const navigate = useNavigate();
     //Hooks to return state values for user login information
     const [username, setUserName] = useState();
     const [password, setPassword] = useState();
@@ -53,12 +54,11 @@ export default function Login({ setToken }){
             username,
             password
         });
-    
-        // FIXME: Remove log
+
         if (token) {
-            console.log(token)
             setToken(token);
             console.log("handleSubmit token obtained")
+            navigate('/dashboard')
         }
         else {
             // FIXME: ERROR POP UP

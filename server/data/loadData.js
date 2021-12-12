@@ -4,7 +4,7 @@
 const fs = require('fs');
 
 // static data imports
-const { User, Class, Attendance } = require('../models/db');
+const { User, ClassData, Attendance } = require('../models/db');
 const userList = JSON.parse(fs.readFileSync('./data/users.json', 'utf-8'));
 const classList = JSON.parse(fs.readFileSync('./data/classes.json', 'utf-8'));
 const attendanceList = JSON.parse(fs.readFileSync('./data/attendance.json', 'utf-8'));
@@ -26,7 +26,7 @@ module.exports = loadData = function() {
 
     for (var i = 0; i < classList.length; i++) {
 
-        Class.create(classList[i])
+        ClassData.create(classList[i])
             .then(() => {
                 console.log("Class/section added!");
             })

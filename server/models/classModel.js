@@ -2,10 +2,8 @@
     Model for the Class Table of the db
 */
 
-const { DATEONLY } = require("sequelize/dist");
-
 module.exports = (sequelize, type) => {
-    return sequelize.define('classes', {
+    return sequelize.define('classData', {
         section: {
             type:type.STRING(10),
             allowNull:false,
@@ -17,6 +15,10 @@ module.exports = (sequelize, type) => {
         },
         classBeginDate: {
             type:type.DATEONLY,
+            allowNull:false
+        },
+        numClassesPerWeek: {
+            type:type.INTEGER,
             allowNull:false
         }
     });

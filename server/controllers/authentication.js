@@ -11,8 +11,7 @@ const passport = require('passport');
 // Login function
 const login = (req, res) => {
     console.log("authController: Login function beginning");
-    console.log("authController: Login req for: " + req.body.username);
-    console.log("authController: Password is: " + req.body.password);
+    
     // Error handling if data is missing 
     if (!req.body.username || !req.body.password) {
         console.log("authController-login: Username or password fail")
@@ -36,7 +35,7 @@ const login = (req, res) => {
             const token = user.generateJWT();
             return res
                 .status(200)
-                .json({token})
+                .json({token: token})
         } else {
             return res
                 .status(401)

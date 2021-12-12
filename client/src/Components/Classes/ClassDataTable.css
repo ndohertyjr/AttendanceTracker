@@ -1,0 +1,10 @@
+table {
+    table-layout: fixed;
+    width: 100%;
+    background-color: aquamarine;
+}
+
+td {
+    width: auto;
+    
+}

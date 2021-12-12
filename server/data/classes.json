@@ -1,17 +1,20 @@
 [
     {
         "section": "111-XA",
-        "className": "CMD 100: Intro to Comedy",
-        "classBeginDate": "2021-10-01"
+        "className": "CS300",
+        "classBeginDate": "2021-10-01",
+        "numClassesPerWeek": 2
     },
     {
         "section": "222-AB",
-        "className": "CMD 100: Intro to Comedy",
-        "classBeginDate": "2021-10-01"
+        "className": "CS300",
+        "classBeginDate": "2021-10-01",
+        "numClassesPerWeek": 2
     },
     {
         "section": "147-AC",
-        "className": "CMD 100: Intro to Comedy",
-        "classBeginDate": "2021-10-01"
+        "className": "HIS250",
+        "classBeginDate": "2021-10-01",
+        "numClassesPerWeek": 4
     }
 ]
