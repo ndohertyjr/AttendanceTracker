@@ -21,13 +21,12 @@ const updateCheckinTime = async (req, res) => {
     // Obtain current data information and validate user has not logged in today
     const currCheckin = new Date();
     const lastCheckin = await getLastCheckin(userId)
-    console.log(lastCheckin)
   
     const checkinAllowed = validateLastCheckin(currCheckin, lastCheckin) 
     
-    console.log(checkinAllowed)
 
     if (userDataValidation && checkinAllowed) {
+        console.log('attendance:updateCheckinTime beginning')
         Attendance.update({
             lastAttendanceCheckin: currCheckin
         }, {

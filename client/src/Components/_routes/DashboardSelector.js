@@ -4,6 +4,9 @@ import jwt from 'jwt-decode';
 import StudentDashboard from '../StudentDashboard/StudentDashboard';
 import TeacherDashboard from '../TeacherDashboard/TeacherDashboard';
 
+/*
+    Function to route authenticated students or teachers to the correct location
+*/
 
 export default function DashboardSelector({token}) {
 

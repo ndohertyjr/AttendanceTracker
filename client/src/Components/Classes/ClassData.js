@@ -6,9 +6,12 @@ import User from "../User/User";
 import ClassTableHeaders from "./ClassTableFormat";
 import './ClassData.css'
 
+/*
+    Returns the student data for a particular class when selected on the teacher dashboard.
+    Functional component formats the data.  Button clears data by returning to the main dashboard page.
+*/
 
-
-
+// Iterate through classData to obtain the specific sections needed
 const getClassSections = (className, classData) => {
 
     let tempClassSection = []
@@ -25,7 +28,7 @@ const getClassSections = (className, classData) => {
 
 const ClassData = () => {
 
-    
+    // Destructure data passed from ClassDataTable component
     const location = useLocation()
     const { className, classData, studentData } = location.state
 

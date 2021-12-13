@@ -9,8 +9,6 @@ import './UserData.css'
 /* 
     Display user data and enables/disables attendance login button.  Attendance check in is validated server side as well.
 */
-
-
 const UserData = ({ user }) => {
 
     const {lastAttendanceCheckin} = user.attendance;
@@ -31,28 +29,30 @@ const UserData = ({ user }) => {
                 //FIXME: ADD TOAST
                 
                 if (data) {
-                    console.log("Check in successful!")
-                    setDisabled(true)
+                    console.log("Check in successful!");
+                    setDisabled(true);
                 }
                 else {
-                    
+                    console.log("UserData: onClick put request failed");
                 }
-            })    
+            });   
         }
 
+    //Verify if the user has checked in today
     const allowCheckin = prevCheckin => {
-        var currCheckin = new Date()
-        var lastCheckin = new Date(prevCheckin)
+        var currCheckin = new Date();
+        var lastCheckin = new Date(prevCheckin);
     
             // If lastCheckin occurred on the same date do not validate
         if (currCheckin.getFullYear() === lastCheckin.getFullYear() &&
             currCheckin.getMonth() === lastCheckin.getMonth() &&
             (currCheckin.getDate() - lastCheckin.getDate()) < 1) {
-    
+            
+            //Allows disabled button to appear
             return false
     
         } else {
-            
+            //Button appears enabled
             return true
         }
     }

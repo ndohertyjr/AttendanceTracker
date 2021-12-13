@@ -29,7 +29,7 @@ async function loginUser(credentials) {
  
             if (!response.ok) {
                 //FIXME: Implement function to handle rejected views
-                console.log("NOT OK!!!")
+                console.log("Login:login user failed.  See error.")
             }
             else {
                 return data;
@@ -48,8 +48,8 @@ export default function Login({ setToken }){
     const handleSubmit = async event => {
         event.preventDefault();
 
-        // FIXME: Remove log comment
-        console.log("handleSubmit getting token")
+
+        console.log("Login:handleSubmit getting token")
         const token = await loginUser({
             username,
             password
@@ -57,11 +57,11 @@ export default function Login({ setToken }){
 
         if (token) {
             setToken(token);
-            console.log("handleSubmit token obtained")
+            console.log("Login:handleSubmit token obtained")
             navigate('/dashboard')
         }
         else {
-            // FIXME: ERROR POP UP
+            //FIXME: Add Error Alert
             console.log("Login failed!")
         }
     }

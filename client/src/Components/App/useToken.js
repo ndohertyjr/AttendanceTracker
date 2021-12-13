@@ -4,6 +4,7 @@ import { useState } from 'react';
 /* 
     Getter and Setter for session authentication.
     Saves or returns token in state.
+    Can return stores JWT in session storage and returns from session storage
 */
 export default function useToken() {
 

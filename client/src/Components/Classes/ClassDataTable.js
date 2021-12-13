@@ -2,9 +2,8 @@
     Functional component to populate the class data for the teacher's dashboard
 */
 
-import React, { Component, useState } from 'react';
-import { Route, Routes, Link, Navigate, useLocation } from 'react-router-dom';
-import { Table, Accordion, CardGroup } from 'react-bootstrap';
+import React from 'react';
+import { Route, Routes, Link } from 'react-router-dom';
 import ClassData from './ClassData';
 import { attendanceCalculator, totalAttendanceAverage } from '../_helpers/Attendance';
 import './ClassDataTable.css'

@@ -1,5 +1,6 @@
 import './UserTableFormat.css'
 
+// Formats the data for the UserTable Headers
 
 const UserTableHeaders = () => {
     return (

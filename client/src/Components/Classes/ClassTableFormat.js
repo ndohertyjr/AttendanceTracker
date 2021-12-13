@@ -1,5 +1,9 @@
 import './ClassTableFormat.css'
 
+/*
+    Formats the headers for the data utilized by ClassData component
+*/
+
 const ClassTableHeaders = () => {
     return (
         <thead className='teacherHeadData'>
