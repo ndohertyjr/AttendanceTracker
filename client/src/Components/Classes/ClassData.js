@@ -3,7 +3,8 @@ import { useParams, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import UserData from "../User/UserData";
 import User from "../User/User";
-import UserTableHeaders from "../User/UserTableFormat";
+import ClassTableHeaders from "./ClassTableFormat";
+import './ClassData.css'
 
 
 
@@ -36,39 +37,31 @@ const ClassData = () => {
         <div className='classDataWrapper'>
             <Outlet />
             <div className="backButton">
-                <button type="button" onClick={() => navigate(-1)}>Back</button>
+                <button type="button" onClick={() => navigate('/dashboard')}>Clear Class Data</button>
             </div>
-            <h2>{className}</h2>
             <div className="sectionsWrapper">
-                <ul>
-                    <table>
-                    
-                    {currentSections.map((classSection, i) => {
-                            
-                            return (
-                                <tr>
+                <table className="teacherClassesTable">
+                    <tbody>
+                        {currentSections.map((classSection, i) => {
+                                return (
                                     <tr key={i}>
-                                       <td>Section: {classSection}</td>
-                                       <td>{i === 0 ? <UserTableHeaders /> : ""} </td>
+                                        <tr id={`${i+" tableHeaders"}`}> 
+                                            <td id={"teacherTableHeaders"}>{i === 0 ? <ClassTableHeaders /> : ""} </td>
+                                        </tr>
+                                
+                                        <tr id={`${i+" tableBody"}`} className='teacherClassUserInfo'>
+                                            {studentData.map(student => {
+                                                if (student.section === classSection) {
+                                                    return <User user={student} />
+                                                }
+                                            })} 
+                                        </tr>  
                                     </tr>
-                                    <tr>
-                                    
-                                    </tr>
-                                        
-                                        
-                                        
-                                        {studentData.map(student => {
-                                            if (student.section === classSection) {
-                                                console.log(student)
-                                                return <User user={student} />
-                                            }
-                                        })} 
-                                </tr>
-                                                        
-                            )
-                        })}
-                    </table>
-                </ul>
+                                                            
+                                )
+                            })}
+                    </tbody>
+                </table>
             </div>
 
              

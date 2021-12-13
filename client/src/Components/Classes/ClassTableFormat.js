@@ -1,9 +1,8 @@
-import './UserTableFormat.css'
+import './ClassTableFormat.css'
 
-
-const UserTableHeaders = () => {
+const ClassTableHeaders = () => {
     return (
-        <thead className="userTableHeads">
+        <thead className='teacherHeadData'>
             <tr>
                 <th>User ID:</th>
                 <th>Name:</th>
@@ -15,4 +14,4 @@ const UserTableHeaders = () => {
     )
 }
 
-export default UserTableHeaders;
+export default ClassTableHeaders;

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ClassDataTable from '../Classes/ClassDataTable';
+import './TeacherDashboard.css'
       
 
 class TeacherDashboard extends Component {
@@ -78,7 +79,7 @@ class TeacherDashboard extends Component {
         } else {
 
             return (
-                <div className="teacherViewContainer">
+                <div>
                     <div className="teacherViewHead">
                         <h1>Teacher Dashboard</h1>
                     </div>

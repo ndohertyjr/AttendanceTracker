@@ -29,4 +29,19 @@ function numOfClassDays(start, classesPerWeek) {
 
 }
 
-export default attendanceCalculator
+// Calculates the class average for attendance by using data from 
+function totalAttendanceAverage(classAttendanceRates) {
+
+    console.log("CLASS ATTENDANCE: " + classAttendanceRates)
+    let totalAttendancePercentages = 0;
+    let numOfStudents = classAttendanceRates.length
+    for (var i = 0; i < numOfStudents; i++) {
+        
+        totalAttendancePercentages += classAttendanceRates[i];
+    }
+    console.log("totalAttendance% " + totalAttendancePercentages)
+    return totalAttendancePercentages / numOfStudents
+
+}
+
+export  {attendanceCalculator, totalAttendanceAverage}

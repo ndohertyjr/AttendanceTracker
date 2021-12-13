@@ -1,0 +1,13 @@
+
+
+.userTableHeads thead tr {
+    background-color: white;
+    color: black;
+
+}
+
+.userTableHeads th {
+    padding: 50px; 
+    font-size: 20px;
+    text-align: center;
+}

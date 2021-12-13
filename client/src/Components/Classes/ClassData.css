@@ -1,17 +1,38 @@
-/* activate toggle */
-
-tr {
-    padding: 5px;
-    align-items: baseline;
-}
-
-table {
-    table-layout: fixed;
-    width: 100%;
-    background-color: aquamarine;
-}
-
-td {
-    width: auto;
+.teacherClassesTable {
     
+    font-size: 0.9em;
+    font-family: sans-serif;
+    width: auto;
+    height: auto;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 25px;
+    margin-top: 25px;
+
+}
+
+#teacherTableHeaders{
+    background-color: rgba(127, 255, 212, 0.2);
+    color: black;
+}
+
+.teacherClassesTable td {
+    width: auto;
+    text-align: left;
+}
+
+
+.backButton button {
+    padding: 5px;
+    font-family: "Montserrat";
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+    background-color: rgb(175, 175, 175);
+    opacity: 0.7;
+    margin-left: 90%;
+}
+
+.backButton :hover {
+    background-color: grey 
 }

@@ -1,7 +1,8 @@
 /*
     Format User Data
 */
-import attendanceCalculator from "../_helpers/Attendance";
+import { attendanceCalculator } from "../_helpers/Attendance";
+import './User.css'
 
 export default function User ({user}) {
     //destructure objects
@@ -14,7 +15,7 @@ export default function User ({user}) {
     console.log("DATE CHECK")
     console.log(classBeginDate, daysAttended, numClassesPerWeek)
     return (
-        <tbody>
+        <tbody className="userBodyData">
             <tr>
                 <td>{user_id}</td>
                 <td>{lastName}, {firstName}</td>
