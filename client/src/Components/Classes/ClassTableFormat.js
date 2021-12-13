@@ -1,10 +1,12 @@
-import './UserTableFormat.css'
+import './ClassTableFormat.css'
 
-// Formats the data for the UserTable Headers
+/*
+    Formats the headers for the data utilized by ClassData component
+*/
 
-const UserTableHeaders = () => {
+const ClassTableHeaders = () => {
     return (
-        <thead className="userTableHeads">
+        <thead className='teacherHeadData'>
             <tr>
                 <th>User ID:</th>
                 <th>Name:</th>
@@ -16,4 +18,4 @@ const UserTableHeaders = () => {
     )
 }
 
-export default UserTableHeaders;
+export default ClassTableHeaders;

@@ -6,13 +6,11 @@
 
 //Import required models and packages
 require('dotenv').config();
-//FIXME: CHANGE ONCE DONE TESTING
-const { Sequelize, Model} = require('sequelize');
-const mysql = require('mysql');
+
+const { Sequelize} = require('sequelize');
 const UserModel = require('./user');
 const ClassModel = require('./classModel');
 const AttendanceModel = require('./attendance');
-const user = require('./user');
 
 
 //DB specific variables
@@ -32,7 +30,7 @@ const sequelize = new Sequelize(
         logging: false
     });
 
-
+// FIXME: Implement connection test logging
 const connSuccess = function () {
     sequelize.authenticate()
     .then(() => {

@@ -1,23 +1,9 @@
-tr {
-    padding: 5px;
-    align-items: baseline;
-}
-
-table {
-    table-layout: fixed;
-    width: 100%;
-    background-color: aquamarine;
-}
-
-td {
-    width: auto;
+.userBodyData td {
     
+        padding: 30px; 
+        font-size: 15px;
+        text-align: center;
+        
 }
 
-th {
-    background-color: red;
-}
 
-ClassData {
-    
-}

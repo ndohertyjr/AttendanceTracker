@@ -2,31 +2,15 @@ require("dotenv").config();
 
 const express = require('express');
 const app = express();
-const createError = require('http-errors');
-const path = require('path');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
-const winston = require('winston'),
-    expressWinston = require('express-winston');
+const port = process.env.PORT || 8080;
 
 //needed for login
-const passport = require('passport');
 require('./config/passport');
-const { User, Class, Attendance } = require('./models/db');
 
 // Router index
 const routerIndex = require('./routes/index');
-
-
-const port = process.env.PORT || 8080;
-
-//file system for importing json data
-var fs = require('fs');
-
-
-//FIXME: ADD WINSTON LOGGING
-
-
 
 // Static data import
 const loadData  = require('./data/loadData');
@@ -48,17 +32,6 @@ app.use('/api', (req, res, next) => {
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
   next();
 });
-
-
-// Catch unauthorized error and create 401
-app.use((err, req, res, next) => {
-    if (err.name === 'UnauthorizedError') {
-      res
-        .status(401)
-        .json({"message": err.name + ": " + err.message});
-    }
-  });
-
 
 // Router path
 app.use('/api', routerIndex);

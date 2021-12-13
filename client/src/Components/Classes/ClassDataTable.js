@@ -1,10 +1,15 @@
-import React, { Component, useState } from 'react';
-import { Route, Routes, Link, Navigate, useLocation } from 'react-router-dom';
-import { Table, Accordion, CardGroup } from 'react-bootstrap';
+/*
+    Functional component to populate the class data for the teacher's dashboard
+*/
+
+import React from 'react';
+import { Route, Routes, Link } from 'react-router-dom';
 import ClassData from './ClassData';
+import { attendanceCalculator, totalAttendanceAverage } from '../_helpers/Attendance';
+import './ClassDataTable.css'
 
 
-
+//obtain the names of classes from original JSON data
 function getClassNames(classes) {
 
     let listOfClasses = []
@@ -12,47 +17,81 @@ function getClassNames(classes) {
         if (!JSON.stringify(listOfClasses).includes(classes[i].className)) {
             listOfClasses.push(classes[i].className)
         }  
-        console.log("TEST") 
     }
 
     return listOfClasses;
 }
 
+// Use attendance helper to total class attendance averages
+function getAttendanceAverage(className, students) {
+    let totalAttendanceRates = []
+    let studentsInClass = []
+    console.log("Class Name" + className)
+    console.log(students)
 
-/*CLASS RENDERING TABLE TO SHOW ALL CURRENT CLASSES FOR TEACHER */
+    for (var i in Object.keys(students)) {
+        if (className === students[i].classDatum.className) {
+            studentsInClass.push(students[i])
+            let {classBeginDate, numClassesPerWeek} = students[i].classDatum;
+            let { daysAttended } = students[i].attendance;
+            totalAttendanceRates.push(attendanceCalculator(classBeginDate, daysAttended, numClassesPerWeek))
+        }
+    };
+
+    console.log("ClassDataTable:getAttendance Average - Calculating Rates")
+    let classAvg = totalAttendanceAverage(totalAttendanceRates)
+ 
+
+    return classAvg
+
+
+}
+
+
+/*FUNCTIONAL COMPONENT FOR RENDERING TABLE TO SHOW ALL CURRENT CLASSES FOR TEACHER */
 
 export default function ClassDataTable ({classListData, studentListData}) {
     
-    const [students, setStudents] = useState(studentListData)
-    const [clicked, setClicked] = useState("0")
- 
-    let location = useLocation();
-
     const currentClassNames = getClassNames(classListData)
 
     return (
-        
-
-            <div className="accordionDataContainer">
-                <h1>Your Classes:</h1>
-                <div className="class-Accordion">
-            
-                        
-                    {currentClassNames.map((className, index) => {
-        
-                            return (<li key={index}>
-                                        <Link 
-                                            to={`${className}`} 
-                                            state={{
-                                                className: className,
-                                                 classData: classListData,
-                                                 studentData: studentListData}}>
-                                            {className}
-                                        </Link>
-                                    </li>                     
-                            )
-                        })}
-                        
+            <div className="classDataContainer">
+                <div className="classWrapper">
+                    <table className="classesList">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <h3 className="teacherClass">Your Classes:</h3>
+                                </td>
+                                {currentClassNames.map((className, index) => {
+                                    return (
+                                        <td key={index}>
+                                            <Link 
+                                                to={`${className}`} 
+                                                state={{
+                                                    className: className,
+                                                        classData: classListData,
+                                                        studentData: studentListData}}>
+                                                {className}
+                                            </Link>
+                                        </td>                     
+                                    )
+                                })}
+                            </tr>
+                            <tr className="attendanceAverageList">
+                                <td>
+                                    <h3 className="attendanceRateTotal">Attendance Totals:</h3>
+                                </td>
+                                {currentClassNames.map((className, index) => {
+                                    return (
+                                        <td key={className+index}>    
+                                            {`${getAttendanceAverage(className, studentListData)}%`}
+                                        </td>
+                                    )
+                                })}
+                            </tr>
+                        </tbody>
+                    </table>
                 
                 </div>
                 <Routes>

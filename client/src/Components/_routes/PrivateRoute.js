@@ -4,7 +4,8 @@ import useToken from "../App/useToken";
 import StudentDashboard from '../StudentDashboard/StudentDashboard';
 import DashboardSelector from './DashboardSelector';
 
-/*  Function to allow authenticated users to access links
+/*  
+    Function to allow authenticated users to access links
 */
 
 

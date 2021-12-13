@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import StudentDashboard from '../StudentDashboard/StudentDashboard';
 
+//Persistent Header
 export default class Header extends Component {
     constructor(props) {
         super(props);

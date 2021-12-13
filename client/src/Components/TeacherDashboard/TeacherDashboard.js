@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import ClassDataTable from '../Classes/ClassDataTable';
-      
+import './TeacherDashboard.css'
+
+/*
+    Teacher Dashboard component obtains json data from the server on all students and formats into the appropriate 
+    classes and sections
+*/
 
 class TeacherDashboard extends Component {
     constructor(props) {
@@ -33,9 +38,12 @@ class TeacherDashboard extends Component {
 
             console.log("TeacherDashboard: Retrieved Class Data")
             if (data) {
-                this.setState({userList: data.users, DataLoaded: true})
+                this.setState({userList: data.users, DataLoaded: true});
             }
-        })
+            else {
+                console.log("TeacherDashboard: Failure retrieving Student data");
+            }
+        });
     }
 
     async getClassData() {
@@ -54,7 +62,10 @@ class TeacherDashboard extends Component {
             if (data) {
                 this.setState({classList: data, DataLoaded: true})
             }
-        })
+            else {
+                console.log("TeacherDashboard: Failure retrieving Class data");
+            }
+        });
     }
 
     
@@ -78,7 +89,7 @@ class TeacherDashboard extends Component {
         } else {
 
             return (
-                <div className="teacherViewContainer">
+                <div>
                     <div className="teacherViewHead">
                         <h1>Teacher Dashboard</h1>
                     </div>
