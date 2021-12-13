@@ -1,3 +1,6 @@
 # Visual studio configs
 .vscode/launch.json
 
+# .env
+.env
+
